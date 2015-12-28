@@ -52,12 +52,19 @@ class CountryController extends Controller
      */
     public function actionIndex3()
     {
+        $model = new Country();
+        if ($model->load(Yii::$app->request->post()) && $model->save())
+        {
+            $model = new Country(); //reset model
+        }
+
         $searchModel = new CountrySearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         $dataProvider->sort = new Sort(['defaultOrder' => ['createtime' => 'desc']]);
         $dataProvider->pagination = new Pagination(['defaultPageSize' => 5]);
 
         return $this->render('index3', [
+            'model' => $model,
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);

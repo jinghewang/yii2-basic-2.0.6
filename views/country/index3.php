@@ -20,6 +20,13 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('Create Country', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
+    <p>
+        <!-- Render create form -->
+        <?= $this->render('_form3', [
+            'model' => $model,
+        ]) ?>
+    </p>
+
     <?php Pjax::begin(['id'=>'countries']); ?>
 
     <?= GridView::widget([
