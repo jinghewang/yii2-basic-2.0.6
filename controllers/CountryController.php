@@ -50,6 +50,23 @@ class CountryController extends Controller
      * Lists all Country models.
      * @return mixed
      */
+    public function actionIndex3()
+    {
+        $searchModel = new CountrySearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider->sort = new Sort(['defaultOrder' => ['createtime' => 'desc']]);
+        $dataProvider->pagination = new Pagination(['defaultPageSize' => 5]);
+
+        return $this->render('index3', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
+    /**
+     * Lists all Country models.
+     * @return mixed
+     */
     public function actionIndex2()
     {
         $query = Country::find();
