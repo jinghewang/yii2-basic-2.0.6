@@ -10,6 +10,7 @@ use yii\widgets\Pjax;
 
 $this->title = 'Countries';
 $this->params['breadcrumbs'][] = $this->title;
+
 ?>
 <div class="country-index">
 
