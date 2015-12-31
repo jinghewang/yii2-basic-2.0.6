@@ -2,7 +2,7 @@
 
 namespace app\controllers;
 
-use hlt\GlobalFunction;
+use app\hlt\Test;
 use Yii;
 use app\models\Country;
 use app\models\CountrySearch;
@@ -210,6 +210,20 @@ class CountryController extends Controller
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
+    }
+
+    /**
+     * Deletes an existing Country model.
+     * If deletion is successful, the browser will be redirected to the 'index' page.
+     * @param string $id
+     * @return mixed
+     */
+    public function actionDebug()
+    {
+/*        $test = new Test();
+        $test->say('ssssss');*/
+
+        var_dump_die('ddddd');
     }
 
     /**
