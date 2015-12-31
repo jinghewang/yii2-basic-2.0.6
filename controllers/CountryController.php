@@ -187,7 +187,7 @@ class CountryController extends Controller
      * @return mixed
      * @throws \Exception
      */
-    public function actionAuthorRemove($id)
+    public function actionAuthor2($id)
     {
         $model = $this->findModel($id);
         $model->population -= 1;

@@ -30,7 +30,32 @@ $this->params['breadcrumbs'][] = $this->title;
             'population',
             'createtime',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            ['class' => 'yii\grid\ActionColumn',
+                'header' => '操作',
+                'template' => '{view} {update} {delete} {author} {author2}',
+                'buttons' => [
+                    'author' => function ($url, $model, $key) {
+                        $options = array_merge([
+                            'title' => Yii::t('yii', 'Author Add'),
+                            'aria-label' => Yii::t('yii', 'Author'),
+                            'data-confirm' => Yii::t('yii', 'Are you sure you want to author add this item?'),
+                            'data-method' => 'post',
+                            'data-pjax' => '0',
+                        ], []);
+                        return Html::a('<span class="glyphicon glyphicon-plus-sign"></span>', $url, $options);
+                    },
+                    'author2' => function ($url, $model, $key) {
+                        $options = array_merge([
+                            'title' => Yii::t('yii', 'Author Remove'),
+                            'aria-label' => Yii::t('yii', 'Author Remove'),
+                            'data-confirm' => Yii::t('yii', 'Are you sure you want to author remove this item?'),
+                            'data-method' => 'post',
+                            'data-pjax' => '0',
+                        ], []);
+                        return Html::a('<span class="glyphicon glyphicon-minus-sign"></span>', $url, $options);
+                    },
+                ]
+            ],
         ],
     ]); ?>
 
