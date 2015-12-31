@@ -162,16 +162,35 @@ class CountryController extends Controller
 
 
     /**
+ * Population an existing Country model.
+ * If deletion is successful, the population will be added one.
+ * @param string $id
+ * @return mixed
+ * @throws \Exception
+ */
+    public function actionAuthor($id)
+    {
+        $model = $this->findModel($id);
+        $model->population += 1;
+        if (!$model->save()){
+            echo json_encode($model->errors);
+            die;
+        }
+
+        return $this->redirect(['index']);
+    }
+
+    /**
      * Population an existing Country model.
      * If deletion is successful, the population will be added one.
      * @param string $id
      * @return mixed
      * @throws \Exception
      */
-    public function actionAuthor($id)
+    public function actionAuthorRemove($id)
     {
         $model = $this->findModel($id);
-        $model->population += 1;
+        $model->population -= 1;
         if (!$model->save()){
             echo json_encode($model->errors);
             die;
