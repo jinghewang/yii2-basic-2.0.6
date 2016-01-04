@@ -2,6 +2,8 @@
 
 namespace app\controllers;
 
+use app\hlt\helpers\BDataHelper;
+use app\hlt\Sms;
 use app\hlt\Test;
 use Yii;
 use app\models\Country;
@@ -107,7 +109,7 @@ class CountryController extends Controller
     public function actionSms()
     {
         $gf = new GlobalFunction();
-        $result = $gf->sendText('15210061902','����������');
+        $result = $gf->sendText('15210061902','测试下内容');
         var_dump($result);
     }
 
@@ -223,7 +225,12 @@ class CountryController extends Controller
 /*        $test = new Test();
         $test->say('ssssss');*/
 
-        var_dump_die('ddddd');
+        //var_dump_die('ddddd');
+
+        $sms = new Sms();
+        //var_dump($sms->BatchSend('18600862625','旅游局告知：您与北京神舟国际旅行社集团有限公司签订的出团日期为2016年01月08日的合同已经上传至第三方备案 【神舟旅游】'));
+        $sms->test();
+
     }
 
     /**
